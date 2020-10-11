@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon src/app.js",
-    "scss": "node-sass --watch resources/scss -o public/css"
+    "scss": "node-sass --watch resources/scss -o public/css",
+    "push": "git push -u origin main"
   },
   "author": "",
   "license": "ISC",
