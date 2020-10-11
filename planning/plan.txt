@@ -1,0 +1,16 @@
+[-] Create Document Structure
+[-] Create a npm project and install install
+    - Think of all the basic dependencies
+        dependencies-
+            - express
+            - ejs , express-ejs-layouts
+        dev dependencies -
+            - nodemon
+            - node-sass
+[-] Create and start server using express
+[-] Setup template engine
+[-] Setup Sass Loader
+[-] Setup environment variables
+[-] Create First Ejs , CSS, Js file and test the above steps
+[-] 
+[-] 
