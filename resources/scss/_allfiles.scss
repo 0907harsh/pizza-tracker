@@ -1,0 +1,29 @@
+// .main-content-wrapper {
+//     padding-left: $main-content-begins;
+//     margin-right: $main-content-ends;
+// }
+
+body {
+    color:#212121;
+    font-family:arial;
+    margin: 0 10px;
+    padding:0 10px;
+    display:flex;
+    flex-direction: column;
+    min-height:100vh;
+    z-index: inherit 0;
+}
+
+a {
+    &:hover{
+        text-decoration: none;
+    }
+}
+
+.cart-button{
+    &:hover{
+        background-color: rgb(28, 96, 224);
+    }
+}
+
+

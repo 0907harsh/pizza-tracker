@@ -17,3 +17,12 @@ a:hover {
 body {
   color: #c52323;
   -webkit-font-smoothing: antialised; }
+
+.cart-button {
+  border: 2px solid white;
+  background-color: blue;
+  padding: 10px;
+  margin-right: 2rem;
+  border-radius: 25%; }
+  .cart-button:hover {
+    background-color: #1c60e0; }

@@ -1,4 +1,5 @@
 @import './variables';
+@import './_allfiles';
 $myfont: Georgia 1.1em;
 $table_row_col: rgb(15, 14, 14);
 body {
@@ -6,6 +7,4 @@ body {
     -webkit-font-smoothing:antialised;
 }
 
-.main-content-wrapper {
-    padding-top: $main-content-begins;
-}
+

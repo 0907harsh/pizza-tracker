@@ -1,12 +1,41 @@
 const path=require('path')
-// const dotenv=require('dotenv')
-// const result=dotenv.config({path:'./config/.env'})
+require('dotenv').config({path:'./environmentVariables/.env'})
 const http=require('http')
 const express=require('express')
+const session=require('express-session')
+const flash=require('express-flash')
+const MongoDbStore= require('connect-mongo')(session)
+require('./utils/mongoose')
+const mongoconnection = require('./utils/mongoose')
 var expressLayouts=require('express-ejs-layouts')
 // require('./db/mongoose')
 
 const app=express()
+
+//Session Storage
+let mongoStore = new MongoDbStore({
+                    mongooseConnection: mongoconnection,
+                    collection: 'sessions'
+                })
+
+//Session config
+app.use(session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: false,
+    store: mongoStore, 
+    cookie: { maxAge: 1000*60*60*24} // 24 hour
+}))
+
+app.use(flash())
+app.use(express.json())
+
+//Global Middleware
+app.use((req,res,next)=>{
+    res.locals.session = req.session
+    next()
+})
+
 const ejs= require('ejs')
 const server=http.createServer(app)
 
@@ -15,6 +44,8 @@ const server=http.createServer(app)
 const webRouter= require('./routes/web')
 app.use(webRouter)
 
+
+
 //Setting Up template engine
 app.set('views',path.join(__dirname,'../templates/views/'))
 app.engine('ejs', require('ejs').renderFile);
@@ -22,11 +53,8 @@ app.set('view engine', 'ejs');
 app.use(expressLayouts)
 app.use(express.static(path.join(__dirname,'../public')))
 
-
-
-//Setting up the port to use the port provided by the environment
 //Starting the server and listening on the dedicated port
-const port = process.env.PORT|| 3000
+const port = process.env.PORT 
 server.listen(port,()=>{
     console.log(`Listening on port ${port}`)
 })

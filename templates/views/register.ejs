@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sign-in/"> -->
+	<link rel="stylesheet"  href="/css/uiCss/uikit.min.css" >
+	<link rel="stylesheet"  href="/css/login.css" >
+</head>
+<body>
+	<%- include('../partials/header') %>
+	<div class="container main-content-wrapper text-center">
+		<img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+		<h1 class="h3 mb-3 font-weight-normal">New User Registration</h1>
+		<form class="form-signin needs-validation" novalidate>
+			<label for="inputEmail" class="sr-only">Email address</label>
+			<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+			<div class="valid-feedback">
+				Looks good!
+			</div>
+			<label for="inputPassword" class="sr-only">Password</label>
+			<input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+			<div class="checkbox mb-3">
+				<label>
+					<input type="checkbox" value="remember-me"> Remember me
+				</label>
+			</div>
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+			<p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+		</form>
+	</div>
+	<!-- includinfg the partial foort-->
+	<script>
+		// Example starter JavaScript for disabling form submissions if there are invalid fields
+		(function() {
+			'use strict';
+			window.addEventListener('load', function() {
+				// Fetch all the forms we want to apply custom Bootstrap validation styles to
+				var forms = document.getElementsByClassName('needs-validation');
+				// Loop over them and prevent submission
+				var validation = Array.prototype.filter.call(forms, function(form) {
+					form.addEventListener('submit', function(event) {
+						if (form.checkValidity() === false) {
+							event.preventDefault();             
+							event.stopPropagation(); 
+						}
+						form.classList.add('was-validated');
+					}, false);
+				});
+			}, false);
+		})();
+	</script>
+	<%- include('../partials/footer') %>
+</body>

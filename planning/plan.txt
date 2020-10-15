@@ -10,7 +10,25 @@
 [-] Create and start server using express
 [-] Setup template engine
 [-] Setup Sass Loader
-[-] Setup environment variables
 [-] Create First Ejs , CSS, Js file and test the above steps
-[-] 
-[-] 
+[-] Install scss and js 
+[-] Install Bootstrap 4
+[-] Create Home Page, Cart Page
+    - Home Summary section
+    - empty cart section
+[-] move routes to routers files
+[-] create dedicated controllers
+[-] Add to cart functionality
+    -   Fetch all pizzas from db and show on home page
+    -   Create menu model and put dummy data
+    -   use connect-mongo for session storage
+        -   dependencies
+            Eg - mongoose, express-session,connect-mongo, dotenv
+        -   Setup environment variables
+[-]
+[-]
+[-]
+[-]
+[-]
+[-]
+[-]

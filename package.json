@@ -4,19 +4,24 @@
   "description": "This is video streaming application",
   "main": "index.js",
   "scripts": {
+    "start": "node src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon src/app.js",
-    "start": "node src/app.js",
-    "run": "node src/app.js",
     "scss": "node-sass --watch resources/scss -o public/css",
     "push": "git push -u origin main"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.20.0",
+    "connect-mongo": "^3.2.0",
+    "dotenv": "^8.2.0",
     "ejs": "^3.1.5",
     "express": "^4.17.1",
-    "express-ejs-layouts": "^2.5.0"
+    "express-ejs-layouts": "^2.5.0",
+    "express-flash": "0.0.2",
+    "express-session": "^1.17.1",
+    "mongoose": "^5.10.9"
   },
   "devDependencies": {
     "node-sass": "^4.14.1",
