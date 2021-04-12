@@ -1,7 +1,7 @@
 const mongoose=require('mongoose')
 // const validator=require('validator')
 // process.env.MONGODB_URL
-url = 'mongodb://localhost/pizza-tracker';
+url = process.env.MONGODB_URL;
 mongoose.connect(url,{
     useNewUrlParser:true, useUnifiedTopology: true,
     useCreateIndex: true, useFindAndModify:false

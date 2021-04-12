@@ -11,10 +11,10 @@ function loginController(){
     };
     return {
         login(req,res){
-            res.render('login',{locals:locals_login})
+            res.render('auth/login',{locals:locals_login})
         },
         register(req,res){
-            res.render('register',{locals:locals_register})
+            res.render('auth/register',{locals:locals_register})
         }
     }
 }

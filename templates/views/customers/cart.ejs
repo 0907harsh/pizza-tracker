@@ -9,6 +9,43 @@
    <body>
        <%- include('../../partials/header') %>
         <!-- includinfg the partial foort-->
+        <div>
+            <% if(session.cart) { %>
+            <div class="pizza-list">
+                <% for(let pizza of Object.values(session.cart.items)) { %>
+                    <div style="padding-top: 20px;">
+                        <div class="uk-card uk-card-default uk-flex" style="padding-right: 20px;"">
+                            <div class="uk-card-media-top">
+                                <img src="/media/img/<%= pizza.item.image %>" width="140rem"alt="">
+                            </div>
+                            <div class="uk-card-body uk-width-expand" style="padding-left: 30px;padding-top: 50px;" uk-grid>
+                                <div class="uk-width-1-4" ><%= pizza.item.name %></div>
+                                <div class="uk-width-1-4"><%= pizza.item.size %>.</div> 
+                                <div class="uk-width-1-4"><%= pizza.item.price %></div>
+                                <div class="uk-width-1-4"><%= pizza.qty %></div>  
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+                <div style="text-align: right;">
+                    <span class="amount">Total Cost :
+                        <span class="amount" style="text-align: right;">Rs. <%= session.cart.totalPrice %></span>
+                    </span> <br/>  
+                    <div>
+                        <textarea id="subject" name="Address" placeholder="Address" rows="4" cols="50"></textarea>
+                    </div>
+                    <input type="text" placeholder="phonenumber" class="amount"><br/>
+                    <button class="amount">Order Now</button>
+                    <a href="/login">Login to Conitnue</a>
+                </div>
+            </div>
+            <% } else { %>
+                <h2>Nothing in the cart. Quickly <a class="uk-button uk-button-primary" href="/">Add pizza</a></h2><br/>
+                <img class="uk-align-center" src="/media/img/empty-cart.png" alt="empty-cart"> 
+            <% } %>
+            
+            
+        </div>
         <%- include('../../partials/footer') %>
        
    </body>

@@ -17,8 +17,8 @@
 									<a class="uk-button uk-button-primary  LoginPageButton" style="display:none; padding:5px 20px 5px 20px" href="#modal-overflow" uk-toggle> Login/SignUp</a>
 									<li class="cart"><a href='/cart'>
 										<button class="uk-button uk-button-primary">
-											<span class="uk-icon uk-margin-small-right">
-												0
+											<span id="cartCounter2" class="uk-icon uk-margin-small-right">
+												<%= session.cart ? session.cart.totalQty : '  ' %>
 											</span>Cart</button> 
 									</a></li>			
 								</ul>
@@ -53,7 +53,7 @@
 				</div>
 				<div class="uk-navbar-right">
 					<a class="cart-button" href="/cart" style="border:2px solid white;padding: 10px;margin-right:2rem;border-radius: 25%;">
-							<span id="cartCounter"><%= session.cart ? session.cart.totalQty : '  ' %></span>
+							<span id="cartCounter1"><%= session.cart ? session.cart.totalQty : '  ' %></span>
 							<img src="/media/img/cart.png">
 					</a>
 					<!-- <a href='/login'><button class="uk-button uk-button-primary LoginPageButton" style="display:none; padding:10px;margin: 10px">Login</button></a>

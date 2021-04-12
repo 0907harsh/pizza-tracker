@@ -1,5 +1,5 @@
 const path=require('path')
-require('dotenv').config({path:'./environmentVariables/.env'})
+require('dotenv').config({path:'./.env'})
 const http=require('http')
 const express=require('express')
 const session=require('express-session')
@@ -24,7 +24,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     store: mongoStore, 
-    cookie: { maxAge: 1000*60*60*24} // 24 hour
+    cookie: { maxAge: 1000*60*60*24} // security of session (level = low security) 24 hour
 }))
 
 app.use(flash())
@@ -33,6 +33,7 @@ app.use(express.json())
 //Global Middleware
 app.use((req,res,next)=>{
     res.locals.session = req.session
+    res.locals.messages = req.messages
     next()
 })
 
