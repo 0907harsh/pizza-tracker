@@ -1,5 +1,5 @@
 const path=require('path')
-require('dotenv').config({path:'./.env'})
+require('dotenv').config({path:'./config/.env'})
 const http=require('http')
 const express=require('express')
 const session=require('express-session')
