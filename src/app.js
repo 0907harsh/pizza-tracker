@@ -8,6 +8,7 @@ const MongoDbStore= require('connect-mongo')(session)
 require('./utils/mongoose')
 const mongoconnection = require('./utils/mongoose')
 var expressLayouts=require('express-ejs-layouts')
+const passport = require('passport')
 // require('./db/mongoose')
 
 const app=express()
@@ -27,13 +28,21 @@ app.use(session({
     cookie: { maxAge: 1000*60*60*24} // security of session (level = low security) 24 hour
 }))
 
+//passport config
+const passortInit = require('./config/passport')
+passortInit(passport)
+app.use(passport.initialize())
+app.use(passport.session())
+
 app.use(flash())
+app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 
 //Global Middleware
 app.use((req,res,next)=>{
     res.locals.session = req.session
-    res.locals.messages = req.messages
+    res.locals.user = req.user
+    // console.log(req)
     next()
 })
 

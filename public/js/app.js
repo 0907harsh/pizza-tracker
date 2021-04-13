@@ -17,7 +17,7 @@ function updateCart(pizza){
         console.log(response)
        cartCounter1.innerText = res.totalQty
        cartCounter2.innerText = res.totalQty
-       flash_message.innerText = res.messages
+       flash_message.innerText = res.messages.message
        flash_message.style.display = 'block'
        setTimeout(()=>{
          flash_message.style.display = 'none'
@@ -27,6 +27,7 @@ function updateCart(pizza){
         // })
      }).catch((error)=>{
         console.log('Error : ',error)
+        flash_message.classList = 'uk-alert-danger'
         flash_message.innerText = 'Internal Server Error'
         flash_message.style.display = 'block'
          setTimeout(()=>{

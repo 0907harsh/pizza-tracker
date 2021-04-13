@@ -37,19 +37,28 @@
 							</a>
 						</li>
 						
-                        <li class="<% try { if (locals.active_login) { %><%= 'uk-active' %><% }} catch{}%>">
-							<a href="/login">
-							<span class="uk-icon uk-margin-small-right" uk-icon="icon: info"></span>
-							Login
-							</a>	
-						</li>
+						<% if(!user) { %>
 						<li class="<% try { if (locals.active_register) { %><%= 'uk-active' %><% }} catch{}%>">
 							<a href="/register">
 							<span class="uk-icon uk-margin-small-right" uk-icon="icon: question"></span>
 							Register</a>
                         </li>
-                       
+						<li class="<% try { if (locals.active_login) { %><%= 'uk-active' %><% }} catch{}%>">
+							<a href="/login">
+							<span class="uk-icon uk-margin-small-right" uk-icon="icon: info"></span>
+							Login
+							</a>	
+						</li>
+						<% } %>
 					</ul>
+					<% if(user) { %>
+							<form id="logOut" action="/logout" method="POST">
+								<a onclick="document.getElementById('logOut').submit()" href="#">
+								<span class="uk-icon uk-margin-small-right" uk-icon="icon: info"></span>
+								<span style="color: beige;">Logout</span>
+								</a>
+							</form>	
+					<% } %>
 				</div>
 				<div class="uk-navbar-right">
 					<a class="cart-button" href="/cart" style="border:2px solid white;padding: 10px;margin-right:2rem;border-radius: 25%;">

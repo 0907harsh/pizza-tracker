@@ -1,5 +1,6 @@
 const express=require('express')
 const router = new express.Router()
+const guest = require('../http/middlewares/guestmiddleware')
 
 //Importing controllers
 const homeController = require('../http/controllers/homeController')
@@ -9,9 +10,13 @@ const cartController = require('../http/controllers/customers/cartController')
 //routes begin here
 router.get('/',homeController().index)
 
-router.get('/login',authController().login)
+router.get('/login',guest,authController().login)
+router.post('/login',authController().postLogin)
 
-router.get('/register',authController().register)
+router.get('/register',guest,authController().register)
+router.post('/register',authController().postRegister)
+
+router.post('/logout',authController().logout)
 
 router.get('/cart',cartController().index)
 router.post('/update-cart',cartController().updateCart)

@@ -34,7 +34,8 @@ function cartController(){
                 cart.totalPrice = parseInt(cart.totalPrice) + parseInt(req.body.price)
             }
             // console.log(req.session.cart)
-            return res.json({totalQty:req.session.cart.totalQty,messages: "Added to cart"})
+            // req.flash('info',"Added to Cart successfully")
+            return res.json({totalQty:req.session.cart.totalQty, messages:{message:"Added to Cart"}})
         }
     }
 }
