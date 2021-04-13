@@ -27,3 +27,6 @@ body {
   .cart-button:hover {
     background-color: #1c60e0; }
 
+.col-75 {
+  width: 25%;
+  margin-top: 6px; }

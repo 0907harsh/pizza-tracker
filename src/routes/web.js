@@ -21,6 +21,8 @@ router.post('/logout',authController().logout)
 router.get('/cart',cartController().index)
 router.post('/update-cart',cartController().updateCart)
 
+router.post('*',homeController().index)
+
 //exporting routes
 module.exports=router
 
