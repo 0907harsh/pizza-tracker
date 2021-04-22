@@ -18,6 +18,13 @@ function loginController(){
             res.render('auth/login',{locals:locals_login})
         },
         postLogin(req,res,next){
+            const {password,email } = req.body
+            // Validation request
+            if(!password || !email){
+               
+                req.flash('error','All fields required')
+                return res.redirect('/login')
+            }
             passport.authenticate('local',(err,user,info)=>{
                 if(err){
                     req.flash('error',info.message)

@@ -1,11 +1,16 @@
 const express=require('express')
 const router = new express.Router()
 const guest = require('../http/middlewares/guestmiddleware')
+const auth = require('../http/middlewares/authmiddleware')
+const admin = require('../http/middlewares/adminMiddleware')
 
 //Importing controllers
 const homeController = require('../http/controllers/homeController')
 const authController = require('../http/controllers/authController')
 const cartController = require('../http/controllers/customers/cartController')
+const orderController = require('../http/controllers/customers/orderController')
+const adminOrderController = require('../http/controllers/admin/orderController')
+const statusController = require('../http/controllers/admin/statutsController')
 
 //routes begin here
 router.get('/',homeController().index)
@@ -21,7 +26,15 @@ router.post('/logout',authController().logout)
 router.get('/cart',cartController().index)
 router.post('/update-cart',cartController().updateCart)
 
-router.get('*',homeController().index)
+//customes routes
+router.post('/orders',auth,orderController().store)
+router.get('/customers/orders',auth,orderController().index)
+router.get('/customers/orders/:id',auth,orderController().show)
+
+// Admin Routes
+router.get('/admin/orders',admin,adminOrderController().index)
+router.post('/admin/order/status',admin,statusController().update)
+// router.get('*',homeController().index)
 
 //exporting routes
 module.exports=router

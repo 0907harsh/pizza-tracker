@@ -1,6 +1,6 @@
 <header class="uk-animation-fade" uk-scrollspy="cls:uk-animation-fade" style="z-index: 1; margin: 5px">
-    <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar" style="background-color: black;">
-			<nav class="uk-navbar-container uk-margin uk-navbar-transparent uk-light" uk-navbar>
+    <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar" >
+			<nav class="uk-navbar-container uk-navbar-transparent uk-light" style="background-color: black;" uk-navbar>
 				<a class="uk-navbar-item uk-hidden@s" type="button" uk-toggle="target: #offcanvas-nav-primary" uk-navbar-toggle-icon ></a>
 						
 						<div id="offcanvas-nav-primary" uk-offcanvas="overlay: true; esc-close: true">
@@ -49,7 +49,15 @@
 							Login
 							</a>	
 						</li>
-						<% } %>
+						
+						<% }else{ %>
+							
+							<li class="<% try { if (locals.active_register) { %><%= 'uk-active' %><% }} catch{}%>">
+								<a href="<% if(user.role == 'customer'){ %><%= '/customers/orders' %><% } %><% if(user.role == 'admin'){ %><%= '/admin/orders' %><% } %>">
+								<span class="uk-icon uk-margin-small-right" uk-icon="icon: question"></span>
+								Orders</a>
+							</li>
+							<% } %>
 					</ul>
 					<% if(user) { %>
 							<form id="logOut" action="/logout" method="POST">
