@@ -1,5 +1,4 @@
-
-   <!DOCTYPE html>
+<!DOCTYPE html>
    <head>
        <meta charset="UTF-8">
        <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -11,35 +10,36 @@
         <!-- includinfg the partial foort-->
         <div>
 
-            All Orders<br/>
+            Add New Product<br/>
+            <% if(messages.error) { %>
+				<pre id="order-alert"><span class="uk-alert-success" uk-alert><%= messages.error %></span></pre>
+			<% } %>
             <% if(messages.success) { %>
 				<pre id="order-alert"><span class="uk-alert-success" uk-alert><%= messages.success %></span></pre>
 			<% } %>
-            <% if(orders.length) { %>
+            <% if(products.length) { %>
                 <table class="uk-table uk-table-hover uk-table-divider">
                     <thead>
                         <tr>
-                            <th>Order</th>
-                            <th>Customer</th>
-                            <th>Address</th>
-                            <th>Status</th>
-                            <th>Placed at</th>
+                            <th>Serial</th>
+                            <th>Name</th>
+                            <th>Size</th>
+                            <th>Price</th>
+                            <th>Image</th>
+                            <th>-</th>
                         </tr>
                     </thead>
-                    <tbody id="orderTableBody">
+                    <tbody id="productTableBody">
                         
                     </tbody>
                 </table> 
             <% } else { %>
                 <ul class="uk-list uk-list-striped">
-                    <li>No Orders Pending</li>
+                    <li>No Products to Showcase</li>
                 </ul>
             <% } %>
         </div>
-        <a href="#" style="height:1.5rem;color: black;text-align: center;background-color: skyblue; width: 2rem;border-radius: 50%;z-index: 1;position: fixed;margin-top: calc(100vh - 50px);margin-left: calc(100vw - 5rem);padding-top: 1rem;" uk-totop uk-scroll></a>
-    
         <script src="/js/admin.js"></script>
         <%- include('../../partials/footer') %>
         
    </body>
-    

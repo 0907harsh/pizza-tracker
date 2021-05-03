@@ -33,7 +33,12 @@ router.get('/customers/orders/:id',auth,orderController().show)
 
 // Admin Routes
 router.get('/admin/orders',admin,adminOrderController().index)
+router.get('/admin/product/addnew',admin,adminOrderController().addnew)
+router.get('/admin/products',admin,adminOrderController().products)
 router.post('/admin/order/status',admin,statusController().update)
+router.post('/admin/product/addnew',admin,adminOrderController().postaddNew)
+router.post('/admin/product/remove',admin,adminOrderController().postRemove)
+
 // router.get('*',homeController().index)
 
 //exporting routes

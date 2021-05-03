@@ -9,7 +9,7 @@ fetch('/admin/orders',{
     }
 }).then(async (res)=>{
     orders=await res.json()
-    markup = generateMarkup(orders)
+    markup = generateOrderMarkup(orders)
     oorderTableBody.innerHTML = markup
 }).catch((err)=>{
     console.log(err)
@@ -22,7 +22,7 @@ function renderItems(items){
     }).join('')
 }
 
-function generateMarkup(){
+function generateOrderMarkup(){
     var count=0;
     return orders.map(order=>{
         count = count+1
@@ -52,6 +52,47 @@ function generateMarkup(){
             </tr>`
             
     }).join('')
-    
-    
+}
+
+
+const productTableBody = document.querySelector('#productTableBody')
+let products=[]
+let productMarkup = ''
+
+fetch('/admin/products',{
+    method: 'GET',
+    headers: {
+        "X-Requested-With": "XMLHttpRequest"
+    }
+}).then(async (res)=>{
+    products=await res.json()
+    productMarkup = generateproductMarkup(products)
+    productTableBody.innerHTML = productMarkup
+}).catch((err)=>{
+    console.log(err)
+})
+
+function generateproductMarkup(){
+    var count=0;
+    return products.map(product=>{
+        count = count+1
+        return `
+            <tr>
+                <td>
+                    <button class="uk-button uk-button-default" type="button" uk-toggle="target: #toggle-animation-multiple${count}; animation:  uk-animation-slide-left, uk-animation-slide-bottom">${count} </button>
+                </td>
+                <td>${product.name}</td>
+                <td>${product.size}</td>
+                <td>${product.price}</td>
+                
+                <td><img class="uk-padding" src="/media/img/${product.image}" width="300rem" alt=""></td>
+                <td>
+                    <form action="/admin/product/remove" method="POST" >
+                        <input type="hidden" name="productId" value="${product._id}">
+                        <button type="submit">Remove</button>
+                    </form>
+                </td>
+            </tr>`
+            
+    }).join('')
 }

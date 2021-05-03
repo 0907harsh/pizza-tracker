@@ -9,6 +9,9 @@
    <body>
        <%- include('../partials/header') %>
        <div id="flash-message" class="uk-alert-success" style="z-index: 10;display: none;" uk-alert></div>
+       <% if(messages.success) { %>
+        <pre id="order-alert"><span class="uk-alert-success" uk-alert><%= messages.success %></span></pre>
+        <% } %>
        <div class="main-content-wrapper" uk-grid>
             
             <% pizzas.forEach(function(pizza){ %>
@@ -27,9 +30,8 @@
        
         </div>
     <a href="#" style="height:1.5rem;color: black;text-align: center;background-color: skyblue; width: 2rem;border-radius: 50%;z-index: 1;position: fixed;margin-top: calc(100vh - 50px);margin-left: calc(100vw - 5rem);padding-top: 1rem;" uk-totop uk-scroll></a>
-        dfchbjkl
         <!-- includinfg the partial foort-->
-        <script src="/js/app.js"></script>
         <%- include('../partials/footer') %>
+        <script src="/js/app.js"></script>
+        
    </body>
-    
