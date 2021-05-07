@@ -1,17 +1,19 @@
-const Menu = require('../../models/menu')
+/** @format */
 
-function homeController(){
+const Menu = require("../../models/menu");
+
+function homeController() {
     var locals = {
-        title: 'Homepage',
-        active_home:'true',
-        description: 'this is the homepage',
+        title: "Homepage",
+        active_home: "true",
+        description: "this is the homepage",
     };
     return {
-        async index(req,res){
-            var pizzas = await Menu.find()
-            res.render('home',{locals,pizzas})
-        }
-    }
+        async index(req, res) {
+            var pizzas = await Menu.find();
+            res.render("home", { locals, pizzas });
+        },
+    };
 }
 
-module.exports = homeController
+module.exports = homeController;

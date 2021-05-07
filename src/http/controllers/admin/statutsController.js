@@ -1,18 +1,23 @@
-const Order = require('../../../models/order')
+/** @format */
 
+const Order = require("../../../models/order");
 
-function statusController(){
+function statusController() {
     return {
-        update(req,res){
-            Order.updateOne({_id:req.body.orderId }, {status:req.body.status},(err,data)=>{
-                if(err){
-                    req.flash('error','Something Went Wrong')
-                    return res.redirect('/admin/orders')
+        update(req, res) {
+            Order.updateOne(
+                { _id: req.body.orderId },
+                { status: req.body.status },
+                (err, data) => {
+                    if (err) {
+                        req.flash("error", "Something Went Wrong");
+                        return res.redirect("/admin/orders");
+                    }
+                    res.redirect("/admin/orders");
                 }
-                res.redirect('/admin/orders')
-            })
-        }
-    }
+            );
+        },
+    };
 }
 
-module.exports = statusController
+module.exports = statusController;

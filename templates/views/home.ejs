@@ -1,13 +1,4 @@
-
-   <!DOCTYPE html>
-   <head>
-       <meta charset="UTF-8">
-       <meta name="viewport" content="width=device-width,initial-scale=1.0">
-       <link rel="stylesheet"  href="/css/uiCss/uikit.min.css" >
-       <link rel="stylesheet"  href="/css/app.css" >
-   </head>
-   <body>
-       <%- include('../partials/header') %>
+     
        <div id="flash-message" class="uk-alert-success" style="z-index: 10;display: none;" uk-alert></div>
        <% if(messages.success) { %>
         <pre id="order-alert"><span class="uk-alert-success" uk-alert><%= messages.success %></span></pre>
@@ -29,9 +20,5 @@
            <% }) %>
        
         </div>
-    <a href="#" style="height:1.5rem;color: black;text-align: center;background-color: skyblue; width: 2rem;border-radius: 50%;z-index: 1;position: fixed;margin-top: calc(100vh - 50px);margin-left: calc(100vw - 5rem);padding-top: 1rem;" uk-totop uk-scroll></a>
-        <!-- includinfg the partial foort-->
-        <%- include('../partials/footer') %>
+        <a href="#" style="height:1.5rem;color: black;text-align: center;background-color: skyblue; width: 2rem;border-radius: 50%;z-index: 1;position: fixed;margin-top: calc(100vh - 50px);margin-left: calc(100vw - 5rem);padding-top: 1rem;" uk-totop uk-scroll></a>
         <script src="/js/app.js"></script>
-        
-   </body>
